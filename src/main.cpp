@@ -95,6 +95,7 @@ std::vector<std::string> convertToASM(const std::vector<unsigned char>& data) {
         const auto op = opcodes[opcode];
         std::string loc1 = "";
         std::string loc2 = "";
+
         switch (op) {
         case opcode::reg_reg_mov:
             const auto b2 = data[++i];
