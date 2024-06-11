@@ -16,12 +16,12 @@ namespace {
 }
 
 enum class opcode {
-    mov,
+    reg_reg_mov,
 };
 
 std::string opcodeToString(const opcode& code) {
     switch (code) {
-    case opcode::mov:
+    case opcode::reg_reg_mov:
         return "mov";
         break;
     }
@@ -33,7 +33,7 @@ std::string opcodeToString(const opcode& code) {
 }
 
 std::map<unsigned char, opcode> opcodes = {
-    {0b1000'1000, opcode::mov},
+    {0b1000'1000, opcode::reg_reg_mov},
 };
 
 std::map<unsigned char, std::string> Mod11Registers16 = {
@@ -96,7 +96,7 @@ std::vector<std::string> convertToASM(const std::vector<unsigned char>& data) {
         std::string loc1 = "";
         std::string loc2 = "";
         switch (op) {
-        case opcode::mov:
+        case opcode::reg_reg_mov:
             const auto b2 = data[++i];
             const auto mod = (b2 & ModMask) >> 6;
             const auto reg = (b2 & RegMask) >> 3;
