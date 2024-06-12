@@ -1,11 +1,11 @@
 set(project_name "asm_listings")
 
-set(asm
+set(asm_files
 	listing_0037_single_register_mov
 	listing_0038_many_register_mov
 )
 
-foreach(file ${asm})
+foreach(file ${asm_files})
 	add_custom_command(
 		OUTPUT ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${file}
 		DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/${file}.asm
